@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-deployment
+  namespace: spring
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-deploy
+  template:
+    metadata:
+      labels:
+        app: spring-deploy
+    spec:
+      containers:
+        - name: spring-deploy
+          image: 304628117658.dkr.ecr.us-west-2.amazonaws.com/springdeploy:latest
+          ports:
+            - containerPort: 5000
